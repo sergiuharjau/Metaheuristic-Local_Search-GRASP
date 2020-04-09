@@ -158,39 +158,4 @@ def greedy_randomized_adaptive_search_procedure(Xdata, city_tour, iterations = 5
         if (city_tour[1] < best_solution[1]):
             best_solution = copy.deepcopy(city_tour) 
         count = count + 1
-        print("Iteration =", count, "-> Distance =", best_solution[1])
-    print("Best Solution =", best_solution)
     return best_solution
-
-######################## Part 1 - Usage ####################################
-
-# Load File - A Distance Matrix (17 cities,  optimal = 1922.33)
-X = pd.read_csv('Python-MH-Local Search-GRASP-Dataset-01.txt', sep = '\t') 
-X = X.values
-
-# Start a Random Seed
-seed = seed_function(X)
-
-# Call the Function
-lsgrasp = greedy_randomized_adaptive_search_procedure(X, city_tour = seed, iterations = 5, rcl = 5, greediness_value = 0.5)
-
-# Plot Solution. Red Point = Initial city; Orange Point = Second City # The generated coordinates (2D projection) are aproximated, depending on the data, the optimum tour may present crosses
-plot_tour_distance_matrix(X, lsgrasp)
-
-######################## Part 2 - Usage ####################################
-
-# Load File - Coordinates (Berlin 52,  optimal = 7544.37)
-Y = pd.read_csv('Python-MH-Local Search-GRASP-Dataset-02.txt', sep = '\t') 
-Y = Y.values
-
-# Build the Distance Matrix
-X = buid_distance_matrix(Y)
-
-# Start a Random Seed
-seed = seed_function(X)
-
-# Call the Function
-lsgrasp = greedy_randomized_adaptive_search_procedure(X, city_tour = seed, iterations = 10, rcl = 15, greediness_value = 0.5)
-
-# Plot Solution. Red Point = Initial city; Orange Point = Second City
-plot_tour_coordinates(Y, lsgrasp)
